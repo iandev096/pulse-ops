@@ -1,0 +1,65 @@
+# =========================================================
+# Pulse Ops - root .gitignore (pnpm workspace)
+# Covers repo-wide ignores; packages may add their own.
+# =========================================================
+
+# --- dependencies ---
+node_modules/
+**/node_modules/
+
+# pnpm store (varies by setup)
+.pnpm-store/
+**/.pnpm-store/
+
+# --- build outputs ---
+dist/
+**/dist/
+build/
+**/build/
+out/
+**/out/
+
+# Vite / tooling caches
+.vite/
+**/.vite/
+.cache/
+**/.cache/
+.tmp/
+**/.tmp/
+
+# --- coverage ---
+coverage/
+**/coverage/
+.nyc_output/
+
+# --- logs ---
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# --- env files (keep examples) ---
+.env
+.env.*
+!.env.example
+
+# --- OS / Editor ---
+.DS_Store
+Thumbs.db
+
+.vscode/
+.idea/
+*.iml
+
+# Cursor
+.cursor/
+
+# --- TypeScript incremental ---
+*.tsbuildinfo
+
+# --- misc ---
+*.pid
+*.seed
+*.tgz
