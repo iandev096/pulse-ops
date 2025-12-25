@@ -80,36 +80,36 @@
 }
 
 .dark {
-  --background: oklch(0.129 0.042 264.695);
+  --background: oklch(0.08 0.02 264.695);
   --foreground: oklch(0.984 0.003 247.858);
-  --card: oklch(0.208 0.042 265.755);
+  --card: oklch(0.12 0.03 265.755);
   --card-foreground: oklch(0.984 0.003 247.858);
-  --popover: oklch(0.208 0.042 265.755);
+  --popover: oklch(0.12 0.03 265.755);
   --popover-foreground: oklch(0.984 0.003 247.858);
   --primary: oklch(0.929 0.013 255.508);
-  --primary-foreground: oklch(0.208 0.042 265.755);
-  --secondary: oklch(0.279 0.041 260.031);
+  --primary-foreground: oklch(0.12 0.03 265.755);
+  --secondary: oklch(0.18 0.03 260.031);
   --secondary-foreground: oklch(0.984 0.003 247.858);
-  --muted: oklch(0.279 0.041 260.031);
+  --muted: oklch(0.18 0.03 260.031);
   --muted-foreground: oklch(0.704 0.04 256.788);
-  --accent: oklch(0.279 0.041 260.031);
+  --accent: oklch(0.18 0.03 260.031);
   --accent-foreground: oklch(0.984 0.003 247.858);
   --destructive: oklch(0.704 0.191 22.216);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
+  --border: oklch(1 0 0 / 15%);
+  --input: oklch(1 0 0 / 20%);
   --ring: oklch(0.551 0.027 264.364);
   --chart-1: oklch(0.488 0.243 264.376);
   --chart-2: oklch(0.696 0.17 162.48);
   --chart-3: oklch(0.769 0.188 70.08);
   --chart-4: oklch(0.627 0.265 303.9);
   --chart-5: oklch(0.645 0.246 16.439);
-  --sidebar: oklch(0.208 0.042 265.755);
+  --sidebar: oklch(0.12 0.03 265.755);
   --sidebar-foreground: oklch(0.984 0.003 247.858);
   --sidebar-primary: oklch(0.488 0.243 264.376);
   --sidebar-primary-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-accent: oklch(0.279 0.041 260.031);
+  --sidebar-accent: oklch(0.18 0.03 260.031);
   --sidebar-accent-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-border: oklch(1 0 0 / 15%);
   --sidebar-ring: oklch(0.551 0.027 264.364);
 }
 
@@ -119,5 +119,99 @@
   }
   body {
     @apply bg-background text-foreground;
+    font-variant-numeric: tabular-nums;
   }
+
+  /* Monospace font stack for technical data */
+  .font-mono,
+  .metric-value,
+  .data-value,
+  code,
+  .tabular-nums {
+    font-family: "JetBrains Mono", "Fira Code", "SF Mono", "Monaco", "Consolas",
+      "Courier New", monospace;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: -0.01em;
+  }
+}
+
+/* Pulse animations for real-time feel */
+@keyframes pulse-subtle {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.6;
+  }
+}
+
+.pulse-indicator {
+  animation: pulse-subtle 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.live-glow {
+  box-shadow: 0 0 8px currentColor;
+  animation: pulse-subtle 2s infinite;
+}
+
+/* Smooth transitions for metric updates */
+.metric-value {
+  transition: transform 0.2s ease-out, color 0.15s ease-out;
+}
+
+.metric-value.updating {
+  transform: scale(1.05);
+}
+
+.hidden-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.hidden-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Custom scrollbar styles */
+.custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: oklch(0.4 0.03 260.031) oklch(0.12 0.03 265.755);
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: oklch(0.12 0.03 265.755);
+  border-radius: 4px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: oklch(0.4 0.03 260.031);
+  border-radius: 4px;
+  border: 1px solid oklch(0.12 0.03 265.755);
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: oklch(0.5 0.03 260.031);
+}
+
+/* Light mode scrollbar */
+:root:not(.dark) .custom-scrollbar {
+  scrollbar-color: oklch(0.7 0.02 260.031) oklch(0.968 0.007 247.896);
+}
+
+:root:not(.dark) .custom-scrollbar::-webkit-scrollbar-track {
+  background: oklch(0.968 0.007 247.896);
+}
+
+:root:not(.dark) .custom-scrollbar::-webkit-scrollbar-thumb {
+  background: oklch(0.7 0.02 260.031);
+  border: 1px solid oklch(0.968 0.007 247.896);
+}
+
+:root:not(.dark) .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: oklch(0.6 0.02 260.031);
 }
