@@ -4,7 +4,8 @@
   "scripts": {
     "dev:frontend": "pnpm --filter frontend dev",
     "dev:data-producer": "pnpm --filter data-producer dev",
-    "build:frontend": "pnpm --filter frontend build",
-    "build:data-producer": "pnpm --filter data-producer build"
+    "build:shared": "pnpm --filter shared build",
+    "build:frontend": "pnpm build:shared && pnpm --filter frontend build",
+    "build:data-producer": "pnpm build:shared && pnpm --filter data-producer build"
   }
 }
