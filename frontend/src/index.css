@@ -215,3 +215,8 @@
 :root:not(.dark) .custom-scrollbar::-webkit-scrollbar-thumb:hover {
   background: oklch(0.6 0.02 260.031);
 }
+
+html {
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
