@@ -5,18 +5,19 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { useState } from "react";
+import { useFiltersStore } from "@/stores/useFiltersStore";
 import { EVENT_TYPES } from "shared";
 
 export function EventTypeFilter() {
-  const [selected, setSelected] = useState<string>("all");
+  const eventType = useFiltersStore((state) => state.eventType);
+  const setEventType = useFiltersStore((state) => state.setEventType);
 
   return (
     <div className="flex flex-col gap-2">
       <label className="text-xs font-medium text-muted-foreground">
         Event Type
       </label>
-      <Select value={selected} onValueChange={setSelected}>
+      <Select value={eventType} onValueChange={setEventType}>
         <SelectTrigger className="w-full">
           <SelectValue placeholder="All Types" />
         </SelectTrigger>

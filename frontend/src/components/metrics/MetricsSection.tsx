@@ -8,7 +8,7 @@ export function MetricsSection() {
   return (
     <section>
       <h2 className="sr-only">Metrics Summary</h2>
-      <div className="grid grid-cols-4 gap-4">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
         <MetricCard
           title={<Abbreviation abbr="EPS" fullText="Events Per Second" />}
           value={metrics.eventsPerSecond.toLocaleString()}

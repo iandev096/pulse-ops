@@ -18,14 +18,14 @@ function formatTimestamp(timestamp: number): string {
 
 function getStatusBadgeVariant(
   eventType: Event["eventType"]
-): "default" | "destructive" | "secondary" {
+): "default" | "destructive" | "warning" {
   switch (eventType) {
     case "success":
       return "default";
     case "error":
       return "destructive";
     case "warning":
-      return "secondary";
+      return "warning";
     default:
       return "default";
   }
@@ -51,11 +51,6 @@ export function EventsTableNaive({ events }: EventsTableNaiveProps) {
             <TableCell className="w-40 font-medium">{event.service}</TableCell>
             <TableCell className="w-32 text-muted-foreground">
               {event.region}
-            </TableCell>
-            <TableCell className="w-32">
-              <code className="rounded bg-muted px-1.5 py-0.5 text-xs">
-                {event.eventType}
-              </code>
             </TableCell>
             <TableCell className="w-24 text-right tabular-nums font-mono">
               <span
