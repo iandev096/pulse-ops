@@ -16,6 +16,23 @@ export default defineConfig({
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
+      shared: path.resolve(__dirname, "../shared/src"),
+    },
+  },
+  build: {
+    minify: "esbuild",
+    rollupOptions: {
+      treeshake: {
+        moduleSideEffects: false,
+        propertyReadSideEffects: false,
+        tryCatchDeoptimization: false,
+      },
+    },
+  },
+  optimizeDeps: {
+    include: ["react", "react-dom"],
+    esbuildOptions: {
+      treeShaking: true,
     },
   },
 });
