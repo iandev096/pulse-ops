@@ -1,10 +1,10 @@
 import { Badge } from "@/components/ui/badge";
 import { Table, TableBody, TableCell, TableRow } from "@/components/ui/table";
-import { type EventData } from "@/lib/mockData";
 import { cn } from "@/lib/utils";
+import { type Event } from "shared";
 
 interface EventsTableNaiveProps {
-  events: EventData[];
+  events: Event[];
 }
 
 function formatTimestamp(timestamp: number): string {
@@ -17,7 +17,7 @@ function formatTimestamp(timestamp: number): string {
 }
 
 function getStatusBadgeVariant(
-  eventType: EventData["eventType"]
+  eventType: Event["eventType"]
 ): "default" | "destructive" | "secondary" {
   switch (eventType) {
     case "success":
@@ -26,6 +26,8 @@ function getStatusBadgeVariant(
       return "destructive";
     case "warning":
       return "secondary";
+    default:
+      return "default";
   }
 }
 

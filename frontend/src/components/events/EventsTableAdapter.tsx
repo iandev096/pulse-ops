@@ -1,8 +1,8 @@
 import { EventsTableNaive } from "@/components/events/EventsTableNaive";
-import { type EventData } from "@/lib/mockData";
+import { type Event } from "shared";
 
 interface EventsTableAdapterProps {
-  events: EventData[];
+  events: Event[];
   /**
    * Implementation mode - currently only "naive" is implemented.
    * "virtualized" is a stub for future implementation.

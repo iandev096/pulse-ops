@@ -5,8 +5,8 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { SERVICES } from "@/lib/mockData";
 import { useState } from "react";
+import { SERVICES } from "shared";
 
 export function ServiceFilter() {
   const [selected, setSelected] = useState<string>("all");

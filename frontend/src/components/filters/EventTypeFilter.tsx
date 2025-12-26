@@ -5,8 +5,8 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { EVENT_TYPES } from "@/lib/mockData";
 import { useState } from "react";
+import { EVENT_TYPES } from "shared";
 
 export function EventTypeFilter() {
   const [selected, setSelected] = useState<string>("all");

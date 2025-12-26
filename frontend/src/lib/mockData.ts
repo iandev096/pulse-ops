@@ -1,27 +1,7 @@
 // Placeholder data for PulseOps dashboard
-// Updated to match backend schema from data-producer/src/schema/event.ts
+// Schema types are now imported from the shared package
 
-export const SERVICES = [
-  "auth",
-  "payments",
-  "orders",
-  "notifications",
-] as const;
-
-export const REGIONS = ["NA", "EU", "APAC", "MEA"] as const;
-
-export const REGION_DESCRIPTIONS: Record<Region, string> = {
-  NA: "North America",
-  EU: "Europe",
-  APAC: "Asia-Pacific",
-  MEA: "Middle East & Africa",
-};
-
-export const EVENT_TYPES = ["success", "error", "warning"] as const;
-
-export type Service = (typeof SERVICES)[number];
-export type Region = (typeof REGIONS)[number];
-export type EventType = (typeof EVENT_TYPES)[number];
+import { REGIONS, SERVICES, type Event, type EventType } from "shared";
 
 // Metrics placeholder data
 export interface MetricsData {
@@ -148,18 +128,8 @@ export function getP95LatencyTimeSeries(
   });
 }
 
-// Event placeholder data
-// Updated to match backend Event schema
-export interface EventData {
-  id: string; // UUID
-  timestamp: number; // Unix epoch ms
-  service: Service;
-  eventType: EventType; // Renamed from "type"
-  userId: string; // NEW: User identifier
-  region: Region;
-  latencyMs: number; // Renamed from "latency"
-  payloadSizeKb: number; // NEW: Payload size in KB
-}
+// Re-export Event type for convenience (EventData is now Event from shared)
+export type EventData = Event;
 
 /**
  * Generate a simple UUID v4 for mock events
@@ -181,7 +151,7 @@ function generateUserId(): string {
     .padStart(5, "0")}`;
 }
 
-export function generateRandomEvent(): EventData {
+export function generateRandomEvent(): Event {
   const service = SERVICES[Math.floor(Math.random() * SERVICES.length)];
   const region = REGIONS[Math.floor(Math.random() * REGIONS.length)];
   const latencyMs = Math.floor(Math.random() * 500) + 10;
@@ -210,9 +180,9 @@ export function generateRandomEvent(): EventData {
   };
 }
 
-export function getPlaceholderEvents(count: number = 50): EventData[] {
+export function getPlaceholderEvents(count: number = 50): Event[] {
   // Generate events with slightly varied timestamps going back in time
-  const events: EventData[] = [];
+  const events: Event[] = [];
   const now = Date.now();
 
   for (let i = 0; i < count; i++) {

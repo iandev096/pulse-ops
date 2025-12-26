@@ -5,8 +5,8 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { REGIONS, REGION_DESCRIPTIONS } from "@/lib/mockData";
 import { useState } from "react";
+import { REGIONS, REGION_DESCRIPTIONS } from "shared";
 
 export function RegionFilter() {
   const [selected, setSelected] = useState<string>("all");
@@ -22,7 +22,7 @@ export function RegionFilter() {
         </SelectTrigger>
         <SelectContent>
           <SelectItem value="all">All Regions</SelectItem>
-          {REGIONS.map((region) => (
+          {REGIONS.map((region: (typeof REGIONS)[number]) => (
             <SelectItem key={region} value={region}>
               {REGION_DESCRIPTIONS[region]}
             </SelectItem>
