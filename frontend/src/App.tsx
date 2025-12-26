@@ -1,4 +1,5 @@
-import { ChartsSection } from "@/components/charts/ChartsSection";
+import { lazy, Suspense } from "react";
+import { ChartsSectionSkeleton } from "@/components/charts/ChartsSectionSkeleton";
 import { EventsTableSection } from "@/components/events/EventsTableSection";
 import { EventTypeFilter } from "@/components/filters/EventTypeFilter";
 import { FiltersPanel } from "@/components/filters/FiltersPanel";
@@ -16,6 +17,12 @@ import { ThemeToggle } from "@/components/topbar/ThemeToggle";
 import { TimeWindowSelector } from "@/components/topbar/TimeWindowSelector";
 import { TopBar } from "@/components/topbar/TopBar";
 
+const ChartsSection = lazy(() =>
+  import("@/components/charts/ChartsSection").then((module) => ({
+    default: module.ChartsSection,
+  }))
+);
+
 function App() {
   return (
     <AppShell>
@@ -27,7 +34,7 @@ function App() {
             <div className="flex items-center gap-4">
               <LastUpdateIndicator />
               <ThemeToggle />
-    </div>
+            </div>
           </TopBar>
 
           <Layout
@@ -41,7 +48,9 @@ function App() {
           >
             <MainContent>
               <MetricsSection />
-              <ChartsSection />
+              <Suspense fallback={<ChartsSectionSkeleton />}>
+                <ChartsSection />
+              </Suspense>
               <EventsTableSection />
             </MainContent>
           </Layout>
