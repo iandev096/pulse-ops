@@ -17,7 +17,7 @@ import {
   type Region,
   type Service,
   EventSchema,
-} from "../schema/event.js";
+} from "shared";
 import { DEFAULT_SEED, Rng } from "./rng.js";
 
 // =============================================================================

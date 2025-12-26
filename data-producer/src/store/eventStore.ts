@@ -6,7 +6,7 @@
  * - Configurable capacity via env (default 200,000)
  */
 
-import { type Event, EventSchema } from "../schema/event.js";
+import { type Event, EventSchema } from "shared";
 import { RingBuffer } from "./ringBuffer.js";
 
 /**

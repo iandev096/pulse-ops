@@ -7,6 +7,7 @@
 
 import crypto from "node:crypto";
 import type { Server } from "node:http";
+import { type Event } from "shared";
 import { WebSocket, WebSocketServer } from "ws";
 import {
   getBatchSizeMax,
@@ -20,7 +21,6 @@ import {
 } from "../config/webSocketFailureConfig.js";
 import { generateEventBatch } from "../generator/eventGenerator.js";
 import { logger } from "../logger.js";
-import { type Event } from "../schema/event.js";
 import { eventStore } from "../store/eventStore.js";
 import { getIsPaused } from "./streamState.js";
 
